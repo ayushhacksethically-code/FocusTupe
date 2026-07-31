@@ -1,0 +1,32 @@
+name: Deploy FocusTube to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # Triggers when you push to your main branch
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-to-github-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository Code
+        uses: actions/checkout@v4
+
+      - name: Inject Private API Keys from GitHub Secrets
+        run: |
+          sed -i "s/FIREBASE_API_KEY_PLACEHOLDER/${{ secrets.FIREBASE_API_KEY }}/g" js/firebase-config.js
+          sed -i "s/FIREBASE_AUTH_DOMAIN_PLACEHOLDER/${{ secrets.FIREBASE_AUTH_DOMAIN }}/g" js/firebase-config.js
+          sed -i "s/FIREBASE_PROJECT_ID_PLACEHOLDER/${{ secrets.FIREBASE_PROJECT_ID }}/g" js/firebase-config.js
+          sed -i "s/FIREBASE_STORAGE_BUCKET_PLACEHOLDER/${{ secrets.FIREBASE_STORAGE_BUCKET }}/g" js/firebase-config.js
+          sed -i "s/FIREBASE_SENDER_ID_PLACEHOLDER/${{ secrets.FIREBASE_SENDER_ID }}/g" js/firebase-config.js
+          sed -i "s/FIREBASE_APP_ID_PLACEHOLDER/${{ secrets.FIREBASE_APP_ID }}/g" js/firebase-config.js
+          sed -i "s/YOUTUBE_API_KEY_PLACEHOLDER/${{ secrets.YOUTUBE_API_KEY }}/g" js/firebase-config.js
+
+      - name: Deploy static assets to gh-pages branch
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: . # Deploys the current project directory root
+          branch: gh-pages # Deploys to gh-pages branch for public hosting
