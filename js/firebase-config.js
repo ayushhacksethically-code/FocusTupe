@@ -5,15 +5,15 @@
 
 // Default configuration - Replace these with your actual keys if you want to hardcode them.
 const DEFAULT_FIREBASE_CONFIG = {
-  apiKey: "",
-  authDomain: "",
-  projectId: "",
-  storageBucket: "",
-  messagingSenderId: "",
-  appId: ""
+  apiKey: "AIzaSyBgK1PTJ12kljIm9tCUhlLeAINAdxwpoWs",
+  authDomain: "social-7402a.firebaseapp.com",
+  projectId: "social-7402a",
+  storageBucket: "social-7402a.firebasestorage.app",
+  messagingSenderId: "957866972673",
+  appId: "1:957866972673:web:90fd263c0659d825025200"
 };
 
-const DEFAULT_YOUTUBE_API_KEY = "";
+const DEFAULT_YOUTUBE_API_KEY = "AIzaSyBm_HRGQ1hGrBTppl6dDWAB326ubi075Ck";
 
 // State to store active configurations
 window.FocusTubeConfig = {
