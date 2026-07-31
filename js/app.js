@@ -412,11 +412,6 @@ async function performSearch(query) {
     const apiKey = window.FocusTubeConfig.youtubeApiKey;
     let finalQuery = searchQuery;
 
-    // 1. Search Keyword Injection: Appends educational filters & negative exclusions
-    if (FocusTubeApp.searchFilters.injectEducational) {
-      finalQuery = `${searchQuery} (tutorial OR lecture OR course OR college OR explained) -marvel -dc -movie -entertainment -gaming -vlog -trailer -teaser -music -song -clips -reaction -meme`;
-    }
-
     // Call YouTube search list
     const searchUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(finalQuery)}&type=video&maxResults=15&key=${apiKey}`;
     const searchRes = await fetch(searchUrl);
