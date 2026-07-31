@@ -42,7 +42,7 @@ html, body {
   height: 100%;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   color: var(--text-primary);
-  background-color: #0d0c15; /* Desktop background surrounding device */
+  background-color: var(--bg-app);
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -52,30 +52,18 @@ html, body {
 
 /* Floating Device blur effect on desktop */
 .desktop-bg-blur {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(3, 199, 90, 0.15) 0%, rgba(13, 12, 21, 0) 70%);
-  z-index: 0;
-  pointer-events: none;
+  display: none;
 }
 
 /* Smartphone Mockup Container (Desktop view) */
 .phone-device-container {
-  width: 420px;
-  height: 840px;
-  max-height: 92vh;
-  border: 10px solid #1a1a24;
-  border-radius: 40px;
+  width: 100vw;
+  height: 100vh;
   background-color: var(--phone-bg);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
   z-index: 1;
   position: relative;
   overflow: hidden;
-  transition: border-color 0.3s ease, background-color 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 .phone-inner-shell {
@@ -1047,52 +1035,96 @@ html, body {
   font-size: 11px;
 }
 
-/* ==================== FOCUS DIM LIGHTS OVERLAY SYSTEM ==================== */
-.focus-mode-active .phone-device-container {
-  border-color: #06070a;
+/* ==================== FOCUS DIM LIGHTS OVERLAY SYSTEM (DARK THEME) ==================== */
+body.focus-mode-active {
+  /* Dark Mode Overrides */
+  --bg-app: #0c0d12;
+  --bg-card: #15161d;
+  --bg-header: #15161d;
+  --border-color: #242630;
+  --text-primary: #f1f3f9;
+  --text-secondary: #9aa0a6;
+  --text-light: #606470;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 16px 36px rgba(0, 0, 0, 0.4);
+  
+  --naver-green-light: #03331b;
+  --chat-bubble-self: #03331b;
+  --chat-bubble-other: #20222e;
+  --notepad-bg: #1c1d26;
+  --notepad-line: #2a2b37;
+  --timer-track: #20222e;
+  --phone-bg: #0c0d12;
 }
-.focus-mode-active .app-header {
-  background-color: #07080a;
-  border-bottom-color: #101115;
-  opacity: 0.15;
+
+body.focus-mode-active .app-header {
+  background-color: var(--bg-header);
+  border-bottom: 1px solid var(--border-color);
 }
-.focus-mode-active .app-header:hover {
-  opacity: 0.95;
-}
-.focus-mode-active .bottom-nav {
-  background-color: #07080a;
-  border-top-color: #101115;
-  opacity: 0.15;
-}
-.focus-mode-active .bottom-nav:hover {
-  opacity: 0.95;
-}
-.focus-mode-active .doubts-container-section,
-.focus-mode-active .watch-details-container {
-  border-color: #101115;
-  background-color: #0d0e12;
-}
-.focus-mode-active .doubt-card {
-  border-color: #101115;
-  background-color: #0d0e12;
+
+body.focus-mode-active .bottom-nav {
+  background-color: var(--bg-header);
+  border-top: 1px solid var(--border-color);
 }
 
 /* ==================== SCREEN RESPONSIVE BREAKPOINTS ==================== */
-/* Native layout on actual mobile phones */
-@media (max-width: 500px) {
-  html, body {
-    background-color: var(--phone-bg);
+/* Desktop fluid dashboard layout on larger screens */
+@media (min-width: 1024px) {
+  .app-workspace {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    grid-template-rows: auto auto 1fr;
+    height: calc(100vh - 56px);
+    overflow: hidden;
   }
-  .desktop-bg-blur {
-    display: none;
+
+  .bottom-nav {
+    display: none !important;
   }
-  .phone-device-container {
-    width: 100vw;
-    height: 100vh;
-    max-height: 100vh;
-    border: none;
-    border-radius: 0;
-    margin: 0;
-    box-shadow: none;
+
+  .tab-screen {
+    display: flex !important;
+    padding-bottom: 16px;
+    height: 100%;
+  }
+
+  #screen-study {
+    grid-column: 1;
+    grid-row: 1 / 4;
+    border-right: 1px solid var(--border-color);
+  }
+
+  #screen-timer {
+    grid-column: 2;
+    grid-row: 1;
+    border-bottom: 1px solid var(--border-color);
+    height: auto;
+  }
+
+  #screen-notes {
+    grid-column: 2;
+    grid-row: 2;
+    border-bottom: 1px solid var(--border-color);
+    height: auto;
+  }
+
+  #screen-chat {
+    grid-column: 2;
+    grid-row: 3;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  /* Hide repetitive headings inside sidebar widgets on desktop view */
+  .timer-screen-header,
+  .notepad-screen-header,
+  .chat-screen-header {
+    display: none !important;
+  }
+
+  /* Prevent heights conflict in sidebar layout */
+  .notepad-screen-layout {
+    height: auto !important;
   }
 }
