@@ -122,7 +122,6 @@ function checkHandleIdentity() {
   const handle = window.ChatManager.getUserHandle();
   if (handle) {
     document.getElementById("nav-user-handle").textContent = handle;
-    document.getElementById("profile-handle-display").textContent = handle;
     initChatAndDoubts();
   } else {
     // Show registration modal, disable closing until handle claimed
@@ -700,7 +699,6 @@ async function handleRegistrationSubmit(e) {
     // Success, close modal and init
     document.getElementById("handle-modal").classList.remove("active");
     document.getElementById("nav-user-handle").textContent = savedHandle;
-    document.getElementById("profile-handle-display").textContent = savedHandle;
     
     initChatAndDoubts();
   } catch (error) {

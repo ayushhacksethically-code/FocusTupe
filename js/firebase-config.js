@@ -13,7 +13,7 @@ const DEFAULT_FIREBASE_CONFIG = {
   appId: "FIREBASE_APP_ID_PLACEHOLDER"
 };
 
-const DEFAULT_YOUTUBE_API_KEY = "YOUTUBE_API_KEY_PLACEHOLDER";
+const DEFAULT_YOUTUBE_API_KEY = "AIzaSyBm_HRGQ1hGrBTppl6dDWAB326ubi075Ck";
 
 // State to store active configurations
 window.FocusTubeConfig = {
