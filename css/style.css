@@ -1035,34 +1035,37 @@ html, body {
   font-size: 11px;
 }
 
-/* ==================== FOCUS DIM LIGHTS OVERLAY SYSTEM ==================== */
-.focus-mode-active .phone-device-container {
-  border-color: #06070a;
+/* ==================== FOCUS DIM LIGHTS OVERLAY SYSTEM (DARK THEME) ==================== */
+body.focus-mode-active {
+  /* Dark Mode Overrides */
+  --bg-app: #0c0d12;
+  --bg-card: #15161d;
+  --bg-header: #15161d;
+  --border-color: #242630;
+  --text-primary: #f1f3f9;
+  --text-secondary: #9aa0a6;
+  --text-light: #606470;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 16px 36px rgba(0, 0, 0, 0.4);
+  
+  --naver-green-light: #03331b;
+  --chat-bubble-self: #03331b;
+  --chat-bubble-other: #20222e;
+  --notepad-bg: #1c1d26;
+  --notepad-line: #2a2b37;
+  --timer-track: #20222e;
+  --phone-bg: #0c0d12;
 }
-.focus-mode-active .app-header {
-  background-color: #07080a;
-  border-bottom-color: #101115;
-  opacity: 0.15;
+
+body.focus-mode-active .app-header {
+  background-color: var(--bg-header);
+  border-bottom: 1px solid var(--border-color);
 }
-.focus-mode-active .app-header:hover {
-  opacity: 0.95;
-}
-.focus-mode-active .bottom-nav {
-  background-color: #07080a;
-  border-top-color: #101115;
-  opacity: 0.15;
-}
-.focus-mode-active .bottom-nav:hover {
-  opacity: 0.95;
-}
-.focus-mode-active .doubts-container-section,
-.focus-mode-active .watch-details-container {
-  border-color: #101115;
-  background-color: #0d0e12;
-}
-.focus-mode-active .doubt-card {
-  border-color: #101115;
-  background-color: #0d0e12;
+
+body.focus-mode-active .bottom-nav {
+  background-color: var(--bg-header);
+  border-top: 1px solid var(--border-color);
 }
 
 /* ==================== SCREEN RESPONSIVE BREAKPOINTS ==================== */
