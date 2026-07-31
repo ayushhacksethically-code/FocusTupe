@@ -1112,4 +1112,16 @@ html, body {
     height: 100%;
     overflow: hidden;
   }
+
+  /* Hide repetitive headings inside sidebar widgets on desktop view */
+  .timer-screen-header,
+  .notepad-screen-header,
+  .chat-screen-header {
+    display: none !important;
+  }
+
+  /* Prevent heights conflict in sidebar layout */
+  .notepad-screen-layout {
+    height: auto !important;
+  }
 }
