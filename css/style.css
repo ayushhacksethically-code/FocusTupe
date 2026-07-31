@@ -29,27 +29,6 @@
   --phone-bg: #f4f6fa;
 }
 
-[data-theme="dark"] {
-  /* Dark Mode Overrides */
-  --bg-app: #0c0d12;
-  --bg-card: #15161d;
-  --bg-header: #15161d;
-  --border-color: #242630;
-  --text-primary: #f1f3f9;
-  --text-secondary: #9aa0a6;
-  --text-light: #606470;
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
-  --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 16px 36px rgba(0, 0, 0, 0.4);
-  
-  --naver-green-light: #03331b;
-  --chat-bubble-self: #03331b;
-  --chat-bubble-other: #20222e;
-  --notepad-bg: #1c1d26;
-  --notepad-line: #2a2b37;
-  --timer-track: #20222e;
-  --phone-bg: #0c0d12;
-}
 
 /* Base Resets & Global Styles */
 * {
